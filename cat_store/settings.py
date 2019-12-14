@@ -2,13 +2,18 @@
 
 import os
 
+import django_heroku
+
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = 'v_m7nl9z39j!5e$q6zkb!@!ky@pesds5jt@#h9qzl)hzle@+in'
+SECRET_KEY = os.environ.get('SECRET_KEY', default='supersecreto')
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'beducatshop.herokuapp.com'
+]
 
 
 # Application definition
@@ -109,7 +114,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_URL = '/static/'
+STATIC_URL = '/assets/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
@@ -119,3 +124,8 @@ STATICFILES_DIRS = [
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+
+# Django Heroku
+
+django_heroku.settings(locals())

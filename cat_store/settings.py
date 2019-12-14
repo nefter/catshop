@@ -9,10 +9,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = os.environ.get('SECRET_KEY', default='supersecreto')
 
-DEBUG = True
+DEBUG = bool(os.environ.get('DJANGO_DEBUG', default=1))
 
 ALLOWED_HOSTS = [
-    'beducatshop.herokuapp.com'
+    'cat-shop-py.herokuapp.com/'
 ]
 
 
